@@ -16,6 +16,6 @@ module TestGuru
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    config.time_zone = 'UTC +03:00'
+    config.time_zone = "Moscow"
   end
 end
