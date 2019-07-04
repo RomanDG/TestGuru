@@ -6,8 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Test.create(title: "Default Title")
-# Answer.create(body: "Default Answer", correct: false)
+# Category.delete_all
+# User.delete_all
+# Test.delete_all
+# Question.delete_all
+# Answer.delete_all
 
 Category.create(title: 'Frontend')
 Category.create(title: 'Backend')
@@ -20,6 +23,9 @@ User.create(user_name: 'John', email: 'john1@yahoo.com', password: '12312')
 Test.create(title: 'Ruby', level: 2, category_id: 2)
 Test.create(title: 'Html', level: 0, category_id: 1)
 Test.create(title: 'Kotlin', level: 3, category_id: 3)
+Test.create(title: 'Elixir', level: 2, category_id: 2)
+Test.create(title: 'JS', level: 0, category_id: 1)
+Test.create(title: 'Flutter', level: 3, category_id: 3)
 
 Question.create(title: 'Any question about Html - 1', body: 'The body of question about Html - 1', test_id: 1)
 Question.create(title: 'Any question about Ruby - 1', body: 'The body of question about Ruby - 1', test_id: 2)
