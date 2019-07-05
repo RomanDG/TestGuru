@@ -3,3 +3,5 @@ class ChangeTestsLevelColumnType < ActiveRecord::Migration[5.2]
     change_column :tests, :level, :integer
   end
 end
+
+# проблемма отступов решена
