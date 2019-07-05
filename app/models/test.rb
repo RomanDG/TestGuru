@@ -1,7 +1,7 @@
 class Test < ApplicationRecord
   belongs_to :category
 
-  def self.sort_of_desc_list category_id
-		Test.order(title: :desc).where(category_id: 1)
+  def ordered_by_category category
+		Test.order(title: :desc).joins("join categories on tests.category_id = categories.id").where(categories: { title: category }).pluck(:title)
 	end
 end
