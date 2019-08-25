@@ -8,9 +8,7 @@ class Test < ApplicationRecord
   scope :middle, -> { where(level: 2..4) }
   scope :hard, -> { where(level: 5..Float::INFINITY) }
 
-  def self.ordered_by_category category
-    Test.order(title: :desc).joins("join categories on tests.category_id = categories.id").where(categories: { title: category }).pluck(:title)
-  end
+  scope :ordered_by_category, -> (value){ 
+    order(title: :desc).joins(:category).where(categories: { title: value }).pluck(:title)
+  }
 end
-
-# проблемма отступов решена
