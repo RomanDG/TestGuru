@@ -5,9 +5,4 @@ class User < ApplicationRecord
 
   validates :user_name, :email, :password, presence: true
 
-  def tests_by_level level
-    # Test.select(:title).joins(:users).where(users: {id: self.id}).where(tests: {level: level})
-    tests.select(:title).where(level: level)
-  end
-
 end

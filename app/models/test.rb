@@ -12,7 +12,15 @@ class Test < ApplicationRecord
   scope :middle, -> { where(level: 2..4) }
   scope :hard, -> { where(level: 5..Float::INFINITY) }
 
-  scope :ordered_by_category, -> (value){ 
-    order(title: :desc).joins(:category).where(categories: { title: value }).pluck(:title)
+  scope :by_category, -> (value){ 
+    joins(:category).where(categories: { title: value })
   }
+
+  # scope :by_level, -> (level) { select(:title).joins(:users).where(tests: {level: level}) } # как альтернативный вариант
+  scope :by_level, -> (level){ select(:title).where(level: level) }
+
+  def self.ordered_by_category value
+    order(title: :desc).by_category(value).pluck(:title)
+  end
+
 end

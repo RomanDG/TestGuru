@@ -4,10 +4,10 @@ class Question < ApplicationRecord
 
   validates :title, :body, presence: true
 
-  validate :validate_quantity_answers
+  validate :validate_quantity_answers, on: :create
 
   private def validate_quantity_answers
-  	errors[:base] << "maximum number of answers exceeded" if answers.count() >= 4
+  	errors[:base] << "maximum number of answers exceeded" if answers.count >= 4
   end
 
 end
