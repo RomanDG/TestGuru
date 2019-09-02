@@ -1,0 +1,9 @@
+<h3>Questions list | <%= link_to 'new question', new_test_question_path %></h3>
+<div>
+	<% @questions.each do |question| %>
+		<div>
+			<span><%= link_to question.title, question_path(question) %></span>
+			<span><%= link_to 'delete', question, method: :delete %></span>
+		</div>
+	<% end %>
+</div>
