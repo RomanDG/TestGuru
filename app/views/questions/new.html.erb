@@ -1,5 +1,5 @@
 <h3>Create Question</h3>
-<%= form_for :question, url: "/tests/" + params[:test_id] + "/questions" do |f| %>
+<%= form_for :question, url: "/tests/#{params[:test_id]}/questions" do |f| %>
 	Title <%= f.text_field :title %><br>
 	Body <%= f.text_field :body %><br>
 	<%= f.submit %>
