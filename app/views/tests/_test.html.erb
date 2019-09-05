@@ -1,0 +1,8 @@
+<div>
+	<h4><%= test.title %> - <%= pluralize(test.questions.count, 'question') %> | <%= link_to 'show test', test_questions_path(test) %></h4>
+	<ul>
+		<% test.questions.each do |question| %>
+			<li><%= question.title %></li>	
+		<% end %>
+	</ul>
+</div>
