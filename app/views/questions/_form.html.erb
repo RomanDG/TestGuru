@@ -1,0 +1,16 @@
+<%= form_with(model: if child.new_record? then [child.test, child] else child end) do |f| %>
+	<p>
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+	</p>
+	<p>
+		<%= f.label :body %>
+		<%= f.text_field :body %>
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
+<p>
+	<%= link_to 'back', test_questions_path(@question.test) %>
+</p>
