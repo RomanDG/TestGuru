@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  get 'tests/index'
-  get 'tests/show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :tests do
-    resources :questions, shallow: true
+    resources :questions, except: [:index], shallow: true
   end
 
 end

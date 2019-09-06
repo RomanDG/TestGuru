@@ -1,4 +1,4 @@
-<%= form_with(model: if child.new_record? then [child.test, child] else child end) do |f| %>
+<%= form_with(model: [@test, @question]) do |f| %>
 	<p>
 		<%= f.label :title %>
 		<%= f.text_field :title %>
@@ -12,5 +12,5 @@
 	</p>
 <% end %>
 <p>
-	<%= link_to 'back', test_questions_path(@question.test) %>
+	<%= link_to 'back', test_path(@question.test) %>
 </p>
