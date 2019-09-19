@@ -1,3 +1,20 @@
-<div>
-	<span><b><%= link_to "#{test.title} test", test_path(test) %></b></span> <span><small>[ <%= pluralize(test.questions.count, 'question') %> ]</small></span>
-</div>
+<tr>
+  <td>
+    <b><%= link_to "#{test.title} test", test_path(test) %></b>
+  </td>
+  <td>
+    <%= test.level %>
+  </td>
+  <td>
+    <%= pluralize(test.questions.count, 'question') %>
+  </td>
+  <td>
+    <%= link_to 'edit', edit_test_path(test) %>
+  </td>
+  <td>
+    <%= link_to 'delete', test_path(test), method: :delete, data: {confirm: 'are you sure?'} %>
+  </td>
+  <td>
+    <%= button_to 'start', start_test_path(test) %>
+  </td>
+</tr>
