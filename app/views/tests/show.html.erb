@@ -1,0 +1,27 @@
+<h3><%= @test.title %> tests:</h3>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th><th>Question</th><th colspan="3">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @test.questions.each do |question| %>
+        <tr>
+          <td><%= question.id %></td>
+          <td><%= question.title %></td>
+          <td><%= link_to 'show', question_path(question) %></td>
+          <td><%= link_to 'edit', edit_question_path(question) %></td>
+          <td><%= link_to 'delete', question, method: :delete, data: {confirm: "are you sure?"} %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+<div>
+  <span><%= link_to 'back', tests_path %></span> | 
+  <span><%= link_to 'create new question', new_test_question_path(@test) %></span>
+</div>
