@@ -18,6 +18,22 @@ class TestPassage < ApplicationRecord
     current_question.nil?
   end
 
+  def percent
+    (correct_questions.to_f / self.test.questions.count * 100).to_i
+  end
+
+  def passed?
+    percent >= 85
+  end
+
+  def total_questions
+    test.questions.count
+  end
+
+  def question_number
+    test.questions.where('id <= ?', current_question.id).count
+  end
+
   private
 
   def before_validation_set_first_question
@@ -25,10 +41,7 @@ class TestPassage < ApplicationRecord
   end
 
   def correct_answer?(answer_ids)
-    correct_answers_count = correct_answers.count
-
-    (correct_answers_count == correct_answers.where(id: answer_ids).count) &&
-    correct_answers_count == answer_ids.count
+    correct_answers.ids.sort == answer_ids.map(&:to_i).sort
   end
 
   def correct_answers
