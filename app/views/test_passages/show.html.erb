@@ -1,0 +1,18 @@
+<h3>Passing the <%= @test_passage.test.title %></h3>
+<span>Question: <%= @test_passage.question_number %> / <%= @test_passage.total_questions %></span>
+
+<p>
+  <%= @test_passage.current_question.body %>
+</p>
+
+<%= form_with url: test_passage_path(@test_passage), local: true, method: :put do |f| %>
+  <%= f.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false do |cb| %>
+    <p>
+      <%= cb.check_box id: "answer_ids_#{cb.object.id}" %>
+      <%= cb.label %>
+    </p>
+  <% end %>
+  <p>
+    <%= f.submit "Next" %>
+  </p>
+<% end %>
